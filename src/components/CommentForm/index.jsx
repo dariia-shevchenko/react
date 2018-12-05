@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Rating from './Rating';
+import Rating from '../Rating';
 
 const ratingOptions = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 

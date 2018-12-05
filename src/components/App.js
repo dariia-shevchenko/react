@@ -3,7 +3,7 @@ import v4 from 'uuid/v4';
 import '../css/App.css';
 import '../css/normalize.css';
 import orderHistory from '../order-history.json';
-import menu from '../menu.json';
+import menuItems from '../menu.json';
 import UserAvatar from '../img/user-pic.svg';
 import AppLogo from '../img/logo.svg';
 import Header from './Header';
@@ -20,18 +20,19 @@ import SignUpForm from './SignUpForm';
 import CommentList from './CommentList';
 import CommentForm from './CommentForm';
 
-const nav = [
-  { id: 'id-1', name: 'menu' },
-  { id: 'id-2', name: 'about' },
-  { id: 'id-3', name: 'contact' },
-  { id: 'id-4', name: 'delivery' },
-];
+const navItems = ['menu', 'about', 'contact', 'delivery'];
 
-const user = {
+const userData = {
   name: 'Bob Ross',
   avatar: UserAvatar,
   avatarWidth: 15,
   avatarHeight: 15,
+};
+
+const logoParam = {
+  logoImg: AppLogo,
+  logoWidth: '50',
+  logoHeight: '50',
 };
 
 const filterItems = (filter, items) =>
@@ -39,12 +40,6 @@ const filterItems = (filter, items) =>
 
 class App extends Component {
   state = {
-    logo: AppLogo,
-    logoWidth: '50',
-    logoHeight: '50',
-    navItems: nav,
-    userData: { ...user },
-    menuItems: menu,
     filter: '',
     comments: [],
   };
@@ -62,22 +57,13 @@ class App extends Component {
   };
 
   render() {
-    const {
-      logo,
-      logoWidth,
-      logoHeight,
-      navItems,
-      userData,
-      menuItems,
-      filter,
-      comments,
-    } = this.state;
+    const { filter, comments } = this.state;
     const filteredItems = filterItems(filter, menuItems);
 
     return (
       <div className="app">
         <Header>
-          <Logo logo={logo} width={logoWidth} height={logoHeight} />
+          <Logo logo={logoParam} />
           <Navigation items={navItems} />
           <UserMenu user={userData} />
         </Header>
