@@ -7,18 +7,11 @@ import menuItems from '../menu.json';
 import UserAvatar from '../img/user-pic.svg';
 import AppLogo from '../img/logo.svg';
 import Header from './Header';
-import Logo from './Logo';
-import Navigation from './Navigation';
-import UserMenu from './UserMenu';
 import Item from './Item';
 import Menu from './Menu';
-import MenuFilter from './MenuFilter';
-import MenuList from './MenuList';
 import OrderHistory from './OrderHistory';
 import SignInForm from './SignInForm';
 import SignUpForm from './SignUpForm';
-import CommentList from './CommentList';
-import CommentForm from './CommentForm';
 
 const navItems = ['menu', 'about', 'contact', 'delivery'];
 
@@ -62,26 +55,16 @@ class App extends Component {
 
     return (
       <div className="app">
-        <Header>
-          <Logo logo={logoParam} />
-          <Navigation items={navItems} />
-          <UserMenu user={userData} />
-        </Header>
-
+        <Header user={userData} logo={logoParam} items={navItems} />
         <SignInForm />
         <SignUpForm />
-        <Item>
-          <CommentList comments={comments} />
-          <CommentForm onSubmit={this.handleAddComment} />
-        </Item>
+        <Item comments={comments} handleAddComment={this.handleAddComment} />
         <OrderHistory items={orderHistory} />
-        <Menu>
-          <MenuFilter
-            filter={filter}
-            onFilterChange={this.handleFilterChange}
-          />
-          <MenuList items={filteredItems} />
-        </Menu>
+        <Menu
+          filteredItems={filteredItems}
+          handleFilterChange={this.handleFilterChange}
+          filter={filter}
+        />
       </div>
     );
   }
