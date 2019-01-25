@@ -230,9 +230,21 @@
     }
   ],
   "categories": [
-    { "value": "soup", "label": "soup" },
-    { "value": "dessert", "label": "dessert" },
-    { "value": "salad", "label": "salad" },
-    { "value": "main course", "label": "main course" }
+    {
+      "value": "soup",
+      "label": "soup"
+    },
+    {
+      "value": "dessert",
+      "label": "dessert"
+    },
+    {
+      "value": "salad",
+      "label": "salad"
+    },
+    {
+      "value": "main course",
+      "label": "main course"
+    }
   ]
 }

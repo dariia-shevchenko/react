@@ -22,8 +22,8 @@ const getMenuItemById = async id => {
   return response.data;
 };
 
-const removeMenuItemById = async id => {
-  const response = await axios.delete(`/menu/${id}`);
+const addMenuItem = async item => {
+  const response = await axios.post('/menu', item);
   return response.data;
 };
 
@@ -32,5 +32,5 @@ export {
   getCategories,
   getMenuItemByCategories,
   getMenuItemById,
-  removeMenuItemById,
+  addMenuItem,
 };

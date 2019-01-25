@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import queryString from 'query-string';
 import Select from 'react-select';
+
 import MenuFilter from './MenuFilter';
 import MenuList from './MenuList';
+import Button from '../../components/Button';
+
 import s from './Menu.module.css';
+import b from '../../components/Button/Button.module.css';
+
 import * as API from '../../services/menu';
 
 const getCategoryFromProps = props =>
@@ -69,6 +74,13 @@ class Menu extends Component {
     }
   };
 
+  handleButtonClick = () => {
+    const { history, match } = this.props;
+    history.push({
+      pathname: `${match.url}/add`,
+    });
+  };
+
   render() {
     const { filter, menuItems, categories } = this.state;
     const filteredItems = filterItems(filter, menuItems);
@@ -79,6 +91,16 @@ class Menu extends Component {
 
     return (
       <div className={s.container}>
+        <div className={s.btnContainer}>
+          <Button
+            className={b.btn}
+            type="submit"
+            onClick={this.handleButtonClick}
+          >
+            Add new menu item
+          </Button>
+        </div>
+
         <div className={s.control}>
           <Select
             isClearable
